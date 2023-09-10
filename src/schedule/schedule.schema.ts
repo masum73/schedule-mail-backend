@@ -12,7 +12,7 @@ import { Status } from './schedule.enum';
 export class Schedule {
   @Prop({ required: true })
   @MaxLength(300)
-  @MinLength(100)
+  @MinLength(2)
   message: string;
 
   @Prop({ required: true })
@@ -48,3 +48,15 @@ export class Schedule {
 }
 
 export const ScheduleSchema = SchemaFactory.createForClass(Schedule);
+ScheduleSchema.set('toJSON', {
+  transform: (doc, ret) => {
+    return {
+      _id: ret._id,
+      message: ret.message,
+      to: ret.to,
+      status: ret.status,
+      receivedAt: ret.recievedAt,
+      createdAt: ret.createdAt,
+    };
+  },
+});
