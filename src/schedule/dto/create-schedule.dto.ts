@@ -1,4 +1,4 @@
-import { IsEmail, MaxLength, MinLength } from 'class-validator';
+import { IsEmail, IsNumber, MaxLength, MinLength } from 'class-validator';
 import { Status } from '../schedule.enum';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { ScheduleDTO } from './schedule.dto';
@@ -28,6 +28,10 @@ export class CreateScheduleDTO extends PartialType(ScheduleDTO) {
     nullable: true,
   })
   recievedAt: number | null;
+
+  @ApiProperty({ default: Date.now() })
+  @IsNumber()
+  scheduleAt: number;
 
   @ApiProperty({
     required: false,

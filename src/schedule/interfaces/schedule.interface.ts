@@ -5,6 +5,7 @@ export interface ISchedule {
   to: string;
   status: Status;
   recievedAt: number | null;
+  scheduleAt: number;
   createdBy: string;
   createdAt: number;
   updatedBy: string;

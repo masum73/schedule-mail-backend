@@ -36,6 +36,10 @@ export class Schedule {
   @IsNumber()
   createdAt: number;
 
+  @Prop({ default: Date.now() })
+  @IsNumber()
+  scheduleAt: number;
+
   @Prop()
   updatedBy: string;
 
@@ -55,6 +59,7 @@ ScheduleSchema.set('toJSON', {
       message: ret.message,
       to: ret.to,
       status: ret.status,
+      scheduleAt: ret.scheduleAt,
       receivedAt: ret.recievedAt,
       createdAt: ret.createdAt,
     };

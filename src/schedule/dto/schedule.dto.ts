@@ -40,6 +40,10 @@ export class ScheduleDTO {
   @IsNumber()
   createdAt: number;
 
+  @ApiProperty({ default: Date.now() })
+  @IsNumber()
+  scheduleAt: number;
+
   @IsString()
   updatedBy: string;
 
