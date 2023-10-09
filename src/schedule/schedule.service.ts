@@ -28,6 +28,7 @@ export class ScheduleService {
     schedule.updatedBy = 'Wahid Sakib';
     schedule.createdBy = 'Wahid Sakib';
     schedule = { ...schedule, ...createScheduleDTO };
+
     await this.scheduleMailQueue.add(
       'schedule-mail',
       {
@@ -35,9 +36,10 @@ export class ScheduleService {
       },
       {
         priority: schedule.scheduleAt,
-        delay: 1000
+        delay: 1000,
       },
     );
+
     return this.scheduleModel.create(schedule);
   }
 }

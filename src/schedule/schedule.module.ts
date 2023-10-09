@@ -5,6 +5,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleSchema } from './schedule.schema';
 import { BullModule } from '@nestjs/bull';
 import { ScheduleMailQueue } from './queue-processors';
+import {ScheduleModule as SM} from '@nestjs/schedule'
+import { ScheduleTaskService } from './schedule-task.service';
 
 @Module({
   imports: [
@@ -12,8 +14,9 @@ import { ScheduleMailQueue } from './queue-processors';
     BullModule.registerQueue({
       name: 'schedule-mail-queue',
     }),
+    SM.forRoot()
   ],
   controllers: [ScheduleController],
-  providers: [ScheduleService, ScheduleMailQueue],
+  providers: [ScheduleService, ScheduleMailQueue, ScheduleTaskService],
 })
 export class ScheduleModule {}
