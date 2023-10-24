@@ -17,6 +17,13 @@ import { BullModule } from '@nestjs/bull';
     }),
     BullModule.registerQueue({
       name: 'schedule-mail-queue',
+      redis: {
+        port: 6379,
+        // autoResubscribe: true,
+        enableAutoPipelining: true, 
+        autoResendUnfulfilledCommands: true,
+        autoResubscribe: true
+      }
     }),
   ],
   controllers: [AppController],

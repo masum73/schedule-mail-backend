@@ -13,6 +13,12 @@ import { ScheduleTaskService } from './schedule-task.service';
     MongooseModule.forFeature([{ name: 'schedule', schema: ScheduleSchema }]),
     BullModule.registerQueue({
       name: 'schedule-mail-queue',
+      redis: {
+        port: 6379,
+        enableAutoPipelining: true,
+        autoResendUnfulfilledCommands: true,
+        autoResubscribe: true
+      }
     }),
     SM.forRoot()
   ],

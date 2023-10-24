@@ -36,10 +36,9 @@ export class ScheduleService {
       },
       {
         priority: schedule.scheduleAt,
-        delay: 1000,
       },
     );
 
     return this.scheduleModel.create(schedule);
-  }
+  } 
 }
